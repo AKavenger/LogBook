@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 app.use(session({
-  secret: "Share your thoughts",
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: false
 }));
@@ -26,7 +26,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://admin-avinash:Test123@cluster0.qqnix.mongodb.net/blogDB", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true});
 mongoose.set("useCreateIndex", true);
 
 passport.use(User.createStrategy());
