@@ -1,0 +1,30 @@
+<%- include("partials/header"); -%>
+
+<div style="background-color:#0064C8;" class="row">
+  <div class="col-lg-6 jumbotron jumbotron-fluid start">
+    <div class="container">
+      <h3 class="display-3">Remember</h3>
+      <br>
+      <p class="display-3"><i>" A ship in harbour is safe, but that is not what ships are built for. "</i></p>
+      <h3 class="display-3">So get ready to sail down some amazing streams!</h3>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <img class="journal-image" src="https://tse2.mm.bing.net/th?id=OIP.dDqkZW61U0ClT6H0VbIcqAHaEK&pid=Api&P=0&w=291&h=164" alt="journal image">
+  </div>
+</div>
+
+<h1 class="posts">----- Posts -----</h1>
+
+<%  posts.forEach(function(post){ %>
+
+<div class="post">
+<h1><%=post.title%></h1>
+<p>
+  <%=post.content.substring(0, 250) + " ..."%>
+  <a href="/posts/<%=post._id%>">Read More</a>
+</p>
+</div>
+<% }) %>
+
+<%- include("partials/footer"); -%>
